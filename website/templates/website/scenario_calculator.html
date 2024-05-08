@@ -14,6 +14,8 @@
     </div>
   </form>
 
-  <div id="results" class="mt-4">Calculated rate: {{ calculated_rate   }}%</div>
-  <div id="results">{{ message }}</div>
+  {% if calculated_rate %}
+    <div id="results" class="mt-4">Calculated rate: {{ calculated_rate   }}%</div>
+    <div id="results">{{ message }}</div>
+  {% endif %}
 {% endblock content %}
