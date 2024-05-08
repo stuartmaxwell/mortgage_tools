@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'website:index' %}">Mortgage Tools</a>
+
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+        <a class="nav-link icon-link" href="{% url 'website:index'%}">{% include "svg/home.svg" %} Home</a>
+      </li>
+      <li>
+        <a class="nav-link icon-link" href="
+                                            {% url 'website:scenario_calculator' %}">
+          {% include "svg/calculator.svg" %} Scenario Calculator</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a class="nav-link icon-link" href="{% url 'admin:index' %}">
+          {% include "svg/gear.svg" %} Admin</a>
+      </li>
+    </ul>
+  </div>
+</nav>

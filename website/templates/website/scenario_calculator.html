@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Scenario Calculator{% endblock title %}
+
+{% block content %}
+  <h1>Scenario Calculator</h1>
+  <p class="lead">Compare two different mortgage scenarios.</p>
+
+  <form action="{% url "website:scenario_calculator" %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Calculate</button>
+    </div>
+  </form>
+
+  <div id="results" class="mt-4">Calculated rate: {{ calculated_rate   }}%</div>
+  <div id="results">{{ message }}</div>
+{% endblock content %}
