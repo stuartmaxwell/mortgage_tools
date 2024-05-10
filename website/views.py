@@ -22,9 +22,9 @@ def scenario_calculator(request: HttpRequest) -> HttpResponse:
         if form.is_valid():
             mortgage_amount = form.cleaned_data["mortgage_amount"]
             scenario_1_rate = form.cleaned_data["scenario_1_rate"]
-            scenario_1_term = form.cleaned_data["scenario_1_term"]
             scenario_2_rate1 = form.cleaned_data["scenario_2_rate"]
-            scenario_2_term1 = form.cleaned_data["scenario_2_term"]
+            scenario_1_term = int(form.cleaned_data["scenario_1_term"])
+            scenario_2_term1 = int(form.cleaned_data["scenario_2_term"])
 
             calculated_rate: float = calculate_scenario(
                 mortgage_amount,
@@ -63,6 +63,13 @@ def calculate_scenario(
     scenario_2_term1: int,
 ) -> float:
     """Calculate the payments for two scenarios."""
+    logger.debug(f"{mortgage_amount=}")
+    logger.debug(f"{scenario_1_rate=}")
+    logger.debug(f"{scenario_1_term=}")
+    logger.debug(f"{type(mortgage_amount)=}")
+    logger.debug(f"{type(scenario_1_rate)=}")
+    logger.debug(f"{type(scenario_1_term)=}")
+
     scenario_1_total = (mortgage_amount * scenario_1_rate / 100 / 12) * (
         scenario_1_term
     )
