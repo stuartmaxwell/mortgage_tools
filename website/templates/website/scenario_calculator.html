@@ -1,21 +1,71 @@
 {% extends "base.html" %}
-
 {% block title %}Scenario Calculator{% endblock title %}
 
 {% block content %}
+
   <h1>Scenario Calculator</h1>
   <p class="lead">Compare two different mortgage scenarios.</p>
 
-  <form action="{% url "website:scenario_calculator" %}" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <div class="col-12">
-      <button type="submit" class="btn btn-primary">Calculate</button>
-    </div>
-  </form>
+  <div class="container" style="max-width: 360px">
 
-  {% if calculated_rate %}
-    <div id="results" class="mt-4">Calculated rate: {{ calculated_rate   }}%</div>
-    <div id="results">{{ message }}</div>
-  {% endif %}
+    <form action="{% url "website:scenario_calculator" %}" method="post">
+      {% csrf_token %}
+
+      <p>Enter the loan amount:</p>
+      <div class="input-group">
+        <div class="input-group-text">$</div>
+        {{ form.mortgage_amount }}
+      </div>
+
+      <p class="mt-3 mb-0">Enter the interest rate and loan term for each scenario. For the calculator to work, the term in scenario 1 should be longer than scenario 2.</p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Scenario 1</th>
+            <th scope="col">Scenario 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rate</td>
+            <td>
+              <div class="input-group">
+                {{ form.scenario_1_rate }}
+                <div class="input-group-text">%</div>
+              </div>
+              {{ form.scenario_1_rate.errors }}
+            </td>
+            <td>
+              {{ form.scenario_2_rate.errors }}
+              <div class="input-group">
+                {{ form.scenario_2_rate }}
+                <div class="input-group-text">%</div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Term</td>
+            <td>
+              {{ form.scenario_1_term.errors }}
+              {{ form.scenario_1_term }}
+            </td>
+            <td>
+              {{ form.scenario_2_term.errors }}
+              {{ form.scenario_2_term }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button type="submit" class="btn btn-primary">Calculate</button>
+    </form>
+
+    {% if calculated_rate %}
+      <div id="results" class="mt-4">Calculated rate: {{ calculated_rate   }}%</div>
+      <div id="results">{{ message }}</div>
+    {% endif %}
+
+  </div>
+
 {% endblock content %}

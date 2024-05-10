@@ -2,8 +2,14 @@
 #    uv pip compile requirements.in -o requirements.txt
 asgiref==3.8.1
     # via django
+crispy-bootstrap5==2024.2
 django==5.0.6
-    # via django-debug-toolbar
+    # via
+    #   crispy-bootstrap5
+    #   django-crispy-forms
+    #   django-debug-toolbar
+django-crispy-forms==2.1
+    # via crispy-bootstrap5
 django-debug-toolbar==4.3.0
 django-environ==0.11.2
 gunicorn==22.0.0
