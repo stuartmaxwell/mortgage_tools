@@ -3,16 +3,23 @@
 asgiref==3.8.1
     # via django
 crispy-bootstrap5==2024.2
-django==5.0.6
+    # via -r requirements.in
+django==5.0.7
     # via
+    #   -r requirements.in
     #   crispy-bootstrap5
     #   django-crispy-forms
     #   django-debug-toolbar
 django-crispy-forms==2.1
-    # via crispy-bootstrap5
+    # via
+    #   -r requirements.in
+    #   crispy-bootstrap5
 django-debug-toolbar==4.3.0
+    # via -r requirements.in
 django-environ==0.11.2
+    # via -r requirements.in
 gunicorn==22.0.0
+    # via -r requirements.in
 iniconfig==2.0.0
     # via pytest
 markdown-it-py==3.0.0
@@ -25,15 +32,20 @@ packaging==24.0
     #   pytest
 pluggy==1.5.0
     # via pytest
-psycopg==3.1.18
+psycopg[binary]==3.1.18
+    # via -r requirements.in
 psycopg-binary==3.1.18
     # via psycopg
 pygments==2.18.0
     # via rich
 pytest==8.2.0
-    # via pytest-django
+    # via
+    #   -r requirements.in
+    #   pytest-django
 pytest-django==4.8.0
+    # via -r requirements.in
 rich==13.7.1
+    # via -r requirements.in
 sqlparse==0.5.0
     # via
     #   django
@@ -41,3 +53,4 @@ sqlparse==0.5.0
 typing-extensions==4.11.0
     # via psycopg
 whitenoise==6.6.0
+    # via -r requirements.in
